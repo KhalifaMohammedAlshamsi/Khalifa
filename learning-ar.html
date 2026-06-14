@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>كيف يتعلم الإنسان — دليلك لفهم دماغك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1714;
+      --paper:     #f7f4ee;
+      --warm-mid:  #e8e2d5;
+      --accent:    #c1531a;
+      --accent-lt: #f0e0d4;
+      --sage:      #4a6741;
+      --sage-lt:   #dde8db;
+      --blue:      #2b5080;
+      --blue-lt:   #d9e4f0;
+      --gold:      #a67c2e;
+      --gold-lt:   #f3e9d0;
+      --muted:     #6b6460;
+      --rule:      #d4cfc7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: #4a4340;
+      font-family: 'Cairo', sans-serif;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    nav .logo {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--accent);
+    }
+    nav ul {
+      list-style: none;
+      display: flex; gap: 2rem;
+    }
+    nav a {
+      text-decoration: none; color: #4a4340;
+      font-size: 0.9rem; font-weight: 600;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--ink); }
+
+    /* ---- HERO ---- */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.85rem; letter-spacing: 0.1em;
+      color: var(--accent); font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Amiri', Georgia, serif;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 1.75rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: var(--accent-lt);
+      text-decoration-thickness: 4px;
+      text-underline-offset: 4px;
+    }
+    .hero-lead {
+      font-size: 1.1rem;
+      color: #5a5350;
+      max-width: 640px; margin: 0 auto 2.5rem;
+      line-height: 2;
+    }
+    .hero-note {
+      display: inline-block;
+      font-family: 'Amiri', serif; font-style: italic;
+      font-size: 1rem; color: #5a5350;
+      border-top: 1px solid var(--rule); padding-top: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ---- SECTION WRAPPER ---- */
+    .page { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    .section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .section-label {
+      font-size: 0.78rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #4a4340; font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-family: 'Amiri', Georgia, serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700; line-height: 1.4;
+      margin-bottom: 1.25rem;
+    }
+
+    h3 {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    p { margin-bottom: 1.1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ---- PULL QUOTE ---- */
+    .pull {
+      margin: 2.5rem 0;
+      padding: 1.5rem 2rem;
+      border-right: 3px solid var(--accent);
+      border-left: none;
+      background: var(--accent-lt);
+      border-radius: 6px 0 0 6px;
+    }
+    .pull p {
+      font-family: 'Amiri', serif; font-style: italic;
+      font-size: 1.2rem; color: var(--ink); margin: 0;
+    }
+    .pull cite {
+      display: block; margin-top: 0.6rem;
+      font-family: 'Cairo', sans-serif; font-style: normal;
+      font-size: 0.82rem; color: #4a4340;
+    }
+
+    /* ---- GRID CARDS ---- */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .card {
+      padding: 1.6rem;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      background: #fff;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+    .card-icon {
+      font-size: 1.8rem; margin-bottom: 0.9rem;
+      display: block;
+    }
+    .card h3 { font-size: 1.05rem; margin-bottom: 0.45rem; }
+    .card p { font-size: 0.9rem; color: #5a5350; margin: 0; line-height: 1.8; }
+
+    /* ---- MYTH VS TRUTH ---- */
+    .myth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    .myth-col { padding: 2rem; }
+    .myth-col:last-child {
+      background: #f0edea;
+      border-right: 1px solid var(--rule);
+    }
+    .myth-col:first-child { background: var(--sage-lt); }
+    .myth-col h4 {
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 1.2rem; font-weight: 700;
+    }
+    .myth-col:last-child h4 { color: #4a4340; }
+    .myth-col:first-child h4 { color: var(--sage); }
+    .myth-item { margin-bottom: 1.2rem; }
+    .myth-item p { font-size: 0.92rem; margin: 0; line-height: 1.8; color: #4a4340; }
+    .myth-item strong { color: #2e2b28; }
+    .myth-badge {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700;
+      padding: 2px 10px; border-radius: 20px;
+      margin-bottom: 0.35rem;
+    }
+    .myth-col:last-child .myth-badge { background: #c2bbb4; color: #2e2b28; }
+    .myth-col:first-child .myth-badge { background: #3a5732; color: #ffffff; }
+
+    /* ---- TIMELINE ---- */
+    .timeline { margin-top: 2rem; position: relative; padding-right: 2rem; padding-left: 0; }
+    .timeline::before {
+      content: '';
+      position: absolute; right: 6px; left: auto; top: 0; bottom: 0;
+      width: 2px; background: var(--rule);
+    }
+    .timeline-item { position: relative; margin-bottom: 2.2rem; }
+    .timeline-item::before {
+      content: '';
+      position: absolute; right: -2rem; left: auto; top: 5px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--paper); border: 2.5px solid var(--accent);
+    }
+    .timeline-item h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+    .timeline-item p { font-size: 0.9rem; color: #5a5350; margin: 0; }
+
+    /* ---- STRATEGIES ---- */
+    .strategy-list { margin-top: 2rem; }
+    .strategy {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .strategy:last-child { border-bottom: none; }
+    .strategy-num {
+      font-family: 'Amiri', serif; font-style: italic;
+      font-size: 2rem; color: var(--accent); font-weight: 400;
+      flex-shrink: 0; line-height: 1; padding-top: 0.1rem;
+    }
+    .strategy-body h3 { margin-bottom: 0.3rem; }
+    .strategy-body p { font-size: 0.92rem; color: #5a5350; margin: 0; }
+
+    /* ---- CALLOUT BOX ---- */
+    .callout {
+      margin: 2rem 0;
+      padding: 1.6rem 2rem;
+      border-radius: 10px;
+    }
+    .callout.blue { background: var(--blue-lt); border-right: 3px solid var(--blue); border-left: none; }
+    .callout.gold { background: var(--gold-lt); border-right: 3px solid var(--gold); border-left: none; }
+    .callout.sage { background: var(--sage-lt); border-right: 3px solid var(--sage); border-left: none; }
+    .callout strong { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .callout.blue strong { color: var(--blue); }
+    .callout.gold strong { color: #7a5a1e; }
+    .callout.sage strong { color: var(--sage); }
+    .callout p { font-size: 0.92rem; margin: 0; color: #4a4340; }
+
+    /* ---- TWO-COL ---- */
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2.5rem; align-items: start;
+      margin-top: 1.5rem;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-size: 0.85rem; color: #4a4340;
+    }
+    footer strong { color: var(--ink); font-weight: 700; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .two-col, .myth-grid { grid-template-columns: 1fr; }
+      .myth-col:last-child { border-right: none; border-bottom: 1px solid var(--rule); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">كيف يتعلم الإنسان</span>
+  <ul>
+    <li><a href="#science">العلم</a></li>
+    <li><a href="#myths">الأساطير</a></li>
+    <li><a href="#strategies">الأساليب</a></li>
+    <li><a href="#blocks">العوائق</a></li>
+    <li><a href="#habits">العادات</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-eyebrow">دليلك لفهم كيف يعمل دماغك</p>
+  <h1>أنت تعرف كيف تتعلم.<br/>لكنّك تعلّمتَ الطريقة <em>الخاطئة</em>.</h1>
+  <p class="hero-lead">
+    في مرحلة ما من حياتنا، التقطنا أفكاراً كثيرة عن طريقة التعلم — من المدرسة، من أهلنا، من أصدقائنا. والمشكلة؟ معظم هذه الأفكار غير صحيحة. هذه الصفحة تخبرك بما يقوله العلم فعلاً، وما يمكنك فعله اليوم.
+  </p>
+  <span class="hero-note">بلا كلمات معقدة. بلا ضغط. فقط أفكار صادقة ومبنية على البحث العلمي.</span>
+</header>
+
+<main class="page">
+
+  <!-- ============================== -->
+  <!-- SECTION 1: WHAT LEARNING IS -->
+  <!-- ============================== -->
+  <section class="section" id="science">
+    <p class="section-label">القسم الأول — ماذا يحدث حقاً في دماغك؟</p>
+    <h2>التعلّم ليس تخزين المعلومات.<br/>بل هو تغيير نفسك.</h2>
+    <p>
+      حين نفكر في التعلم، كثير منا يتخيل دلواً يُملأ بالمعلومات — صُبَّ فيه الكفاية منها وصرت "متعلماً". لكن دماغك لا يعمل كقرص صلب. هو أشبه بمدينة حية.
+    </p>
+    <p>
+      في كل مرة تواجه فيها شيئاً جديداً، يبني دماغك وصلات حقيقية بين خلايا عصبية تُسمى الخلايا العصبونية. هذه ليست مجرد صور مجازية — بل هي تغييرات فعلية في بنية دماغك. كلما مارست شيئاً أو عدت إليه، قوي الاتصال وصار أسرع وأسهل. وكلما تركته، ضعف. الكلمة العلمية لهذا هي <em>المرونة العصبية</em>، وهي أجمل فكرة في علم الأعصاب: دماغك دائماً قيد البناء، في أي عمر كنت.
+    </p>
+
+    <div class="pull">
+      <p>«التعلّم ليس ملء دلو، بل إشعال نار.»</p>
+      <cite>— يُنسب إلى الشاعر الأيرلندي ويليام بتلر ييتس</cite>
+    </div>
+
+    <p>
+      هذا مهم لأنه يغير معنى "بذل الجهد". التحديق في نفس الصفحة لساعات طويلة لا يقوّي الاتصالات العصبية. الكفاح، واسترجاع المعلومات، وتطبيقها، والنوم — هذا ما يفعل ذلك. الشعور بالصعوبة؟ هذا غالباً هو الشعور بالتعلم. الشعور بأنك "فهمت تماماً" بعد القراءة؟ كثيراً ما يكون وهماً.
+    </p>
+
+    <h3 style="margin-top:2rem;">المراحل الثلاث التي يمر بها كل متعلم</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>الترميز — استقبال المعلومة</h3>
+        <p>يقرر دماغك ما يستحق الانتباه. الجِدّة والمشاعر والأهمية الشخصية كلها ترسل إشارة تقول "احتفظ بهذا". التكرار المجرد بلا معنى ضعيف جداً في هذه المرحلة.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>التوطيد — ترسيخ المعلومة</h3>
+        <p>يحدث هذا أساساً أثناء نومك. يُعيد دماغك تشغيل ما تعلمته، وينقله من الذاكرة قصيرة المدى إلى الذاكرة طويلة المدى، ويربطه بما تعرفه مسبقاً. السهر طوال الليل يُعطّل هذه العملية تماماً.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>الاسترجاع — استخدام المعلومة فعلاً</h3>
+        <p>هذا هو الجزء الذي يتخطاه معظم الناس. في كل مرة تتذكر فيها شيئاً بنجاح — تكافح لإيجاده ثم تجده — تجعل الذاكرة أقوى. اختبار نفسك ليس فقط وسيلة لقياس التعلم؛ هو <em>التعلم نفسه</em>.</p>
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <strong>ملاحظة إنسانية</strong>
+      <p>ربما مررت بهذا: تفهم شيئاً تماماً في الحصة، ثم تبيض ذاكرتك في الامتحان. الفجوة بين "التعرف على المعلومة" و"معرفتها فعلاً" هي من أهم الأشياء التي يمكنك فهمها عن عقلك.</p>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 2: MYTHS -->
+  <!-- ============================== -->
+  <section class="section" id="myths">
+    <p class="section-label">القسم الثاني — تصحيح ما ظننته صحيحاً</p>
+    <h2>الأساطير التي تعلّمناها جميعاً.<br/>وما يقوله العلم حقاً.</h2>
+    <p>
+      الكثير من النصائح الشائعة عن الدراسة — التي علّمها لنا المعلمون أو شربناها من ثقافة المدرسة — اتضح أنها خاطئة أو ناقصة جداً. إليك أبرزها.
+    </p>
+
+    <div class="myth-grid">
+      <div class="myth-col">
+        <h4>✓ &nbsp;ما يقوله العلم</h4>
+
+        <div class="myth-item">
+          <span class="myth-badge">الحقيقة</span>
+          <p><strong>اختبار نفسك (استرجاع المعلومات) أقوى بكثير.</strong><br/>حتى لو أخطأت في الإجابة، فإن محاولة التذكر تُقوّي الذاكرة أكثر من مجرد إعادة القراءة.</p>
+        </div>
+        <div class="myth-item">
+          <span class="myth-badge">الحقيقة</span>
+          <p><strong>الصراع مع الصعوبة هو الشرط الأساسي، لا دليل على العجز.</strong><br/>الشعور بالارتباك هو بالضبط المكان الذي تتكوّن فيه الروابط الجديدة. من المفترض أن يكون صعباً في البداية.</p>
+        </div>
+        <div class="myth-item">
+          <span class="myth-badge">الحقيقة</span>
+          <p><strong>الصور والمخططات تُساعد الجميع، لا نوعاً بعينه.</strong><br/>الرسوم والتخطيطات والأمثلة الجيدة تُحسّن الذاكرة لدى جميع الطلاب، ليس "المتعلمين البصريين" فقط.</p>
+        </div>
+        <div class="myth-item">
+          <span class="myth-badge">الحقيقة</span>
+          <p><strong>جلسات دراسة مُركّزة من 25 إلى 50 دقيقة تتفوق على الجلسات الطويلة.</strong><br/>التركيز العميق في وقت قصير يُنتج نتائج أفضل باستمرار من ساعات طويلة بلا تركيز.</p>
+        </div>
+        <div class="myth-item">
+          <span class="myth-badge">الحقيقة</span>
+          <p><strong>البداية — حتى لو كانت سيئة — أفضل من انتظار الاستعداد.</strong><br/>الحافز غالباً يأتي بعد البدء، لا قبله. الشروع في العمل هو الحل.</p>
+        </div>
+      </div>
+      <div class="myth-col">
+        <h4>❌ &nbsp;الأسطورة</h4>
+
+        <div class="myth-item">
+          <span class="myth-badge">أسطورة</span>
+          <p><strong>«إعادة قراءة الملاحظات طريقة رائعة للمذاكرة.»</strong><br/>يفعلها الجميع تقريباً. تبدو منتجة. لكنها في معظم الأحيان مضيعة للوقت.</p>
+        </div>
+        <div class="myth-item">
+          <span class="myth-badge">أسطورة</span>
+          <p><strong>«بعض الناس ببساطة ليسوا من نوع الرياضيات.»</strong><br/>هذا الكلام مريح للسمع، لكنه خاطئ. لا يوجد شيء اسمه "جين الرياضيات".</p>
+        </div>
+        <div class="myth-item">
+          <span class="myth-badge">أسطورة</span>
+          <p><strong>«أساليب التعلم حقيقية — أنا متعلم بصري.»</strong><br/>دُرست هذه الفكرة كثيراً. لا يوجد دليل علمي على أن تطبيق أسلوب بعينه على الطالب يُحسّن نتائجه.</p>
+        </div>
+        <div class="myth-item">
+          <span class="myth-badge">أسطورة</span>
+          <p><strong>«تعدد المهام يجعلك أكثر إنتاجية أثناء الدراسة.»</strong><br/>دماغك لا يؤدي مهمتين في آن واحد. هو يتنقل بينهما، وكل تنقل يُكلّفك جزءاً من تركيزك.</p>
+        </div>
+        <div class="myth-item">
+          <span class="myth-badge">أسطورة</span>
+          <p><strong>«تحتاج إلى الحافز لتذاكر جيداً.»</strong><br/>انتظار الحافز طريقة ممتازة لعدم تعلّم أي شيء صعب أبداً.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 3: STRATEGIES -->
+  <!-- ============================== -->
+  <section class="section" id="strategies">
+    <p class="section-label">القسم الثالث — ما يُجدي نفعاً فعلاً</p>
+    <h2>أساليب دراسة تدعمها الأبحاث<br/>لا يستخدمها معظم الناس.</h2>
+    <p>
+      هذه ليست مجرد نصائح. بل هي تقنيات ثبت نجاحها عبر عشرات السنوات من التجارب. السبب في أن معظم الناس لا تستخدمها بسيط: تبدو أصعب من البدائل. وهذه الصعوبة بالضبط هي ما يجعلها تعمل.
+    </p>
+
+    <div class="strategy-list">
+      <div class="strategy">
+        <div class="strategy-num">١</div>
+        <div class="strategy-body">
+          <h3>ممارسة الاسترجاع — اختبر نفسك قبل أن تكون جاهزاً</h3>
+          <p>أغلق ملاحظاتك وحاول كتابة كل ما تعرفه عن الموضوع. ثم تحقق مما فاتك. افعل هذا قبل أن تشعر بالثقة. الكفاح من أجل تذكّر شيء — ثم إيجاده — هو بالضبط الآلية التي تبني ذاكرة طويلة المدى. البطاقات التعليمية والاختبارات التجريبية و"تفريغ الدماغ" كلها تُجدي. إعادة القراءة لا تُجدي.</p>
+        </div>
+      </div>
+      <div class="strategy">
+        <div class="strategy-num">٢</div>
+        <div class="strategy-body">
+          <h3>التكرار المتباعد — حارب منحنى النسيان</h3>
+          <p>رسم عالم النفس الألماني هرمان إيبنجهاوس "منحنى النسيان" في القرن التاسع عشر — الطريقة المتوقعة التي تتلاشى بها الذكريات بدون مراجعة. الحل بسيط: راجع المادة على فترات متزايدة (اليوم الأول، الثالث، السابع، الحادي والعشرون). التطبيق المثالي لهذا هو: راجع قبيل أن تنسى، لا فور أن تتعلم.</p>
+        </div>
+      </div>
+      <div class="strategy">
+        <div class="strategy-num">٣</div>
+        <div class="strategy-body">
+          <h3>التداخل — امزج موضوعاتك عن قصد</h3>
+          <p>بدلاً من إتقان نوع واحد من المسائل قبل الانتقال للتالي، امزج أنواعاً مختلفة معاً. سيبدو هذا أصعب وأكثر فوضى. لكن النتائج بعد هذا الأسلوب أفضل باستمرار، لأنه يجبر دماغك على تحديد الاستراتيجية الصحيحة، لا مجرد تنفيذ خطوات محفوظة.</p>
+        </div>
+      </div>
+      <div class="strategy">
+        <div class="strategy-num">٤</div>
+        <div class="strategy-body">
+          <h3>أسلوب فاينمان — اشرح كأنك تُخبر طفلاً صغيراً</h3>
+          <p>اختر فكرة. اكتبها كأنك تشرحها لطالب في الابتدائية لا يعرف شيئاً عنها. في كل مرة تلجأ فيها إلى مصطلح معقد أو تُصاب بالتوقف، فقد وجدت ثغرة في فهمك — ارجع إلى المصدر واملأها. كرر حتى تستطيع شرح الفكرة كاملة ببساطة وطلاقة.</p>
+        </div>
+      </div>
+      <div class="strategy">
+        <div class="strategy-num">٥</div>
+        <div class="strategy-body">
+          <h3>التساؤل التفصيلي — اسأل "لماذا؟" مثل طفل فضولي</h3>
+          <p>أثناء القراءة والدراسة، اسأل نفسك باستمرار: لماذا هذا صحيح؟ كيف يرتبط بما أعرفه؟ ماذا سيتغير لو كان خاطئاً؟ توليد هذه الروابط بدلاً من قبول الحقائق بشكل سلبي يُحسّن الحفظ والفهم بشكل كبير. الطفل المزعج الذي يسأل "لماذا؟" عن كل شيء يستخدم عن غير قصد واحدة من أفضل تقنيات الدراسة المعروفة للعلم.</p>
+        </div>
+      </div>
+      <div class="strategy">
+        <div class="strategy-num">٦</div>
+        <div class="strategy-body">
+          <h3>الأمثلة الحية — ربط الأفكار المجردة بالواقع</h3>
+          <p>الأفكار المجردة تزلق من الذاكرة. الأمثلة المحددة والحية تبقى. حين تتعلم مفهوماً جديداً، اربطه دائماً بمثالين من الحياة الواقعية — أحدهما يُجسّد الفكرة تماماً، والآخر يُظهر حدودها. إيجادك للأمثلة بنفسك أقوى بكثير من قراءة أمثلة جاهزة.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <strong>ملاحظة صادقة</strong>
+      <p>لا يعمل أي من هذه الأساليب بشكل مثالي مع كل شخص في كل موضوع. المهارة الحقيقية هي أن تلاحظ ما يُساعدك فعلاً على الاحتفاظ بالمعلومات في مقابل ما يجعلك تشعر فقط بأنك منتج. تتبّع هذا — حرفياً — لبضعة أسابيع. الوعي الذاتي وحده يساوي أكثر من أي تقنية منفردة.</p>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 4: WHAT GETS IN THE WAY -->
+  <!-- ============================== -->
+  <section class="section" id="blocks">
+    <p class="section-label">القسم الرابع — الجانب الإنساني</p>
+    <h2>ما الذي يُعيق التعلم فعلاً؟<br/>(ليس الكسل).</h2>
+    <p>
+      كثير من النصائح المتعلقة بالتعلم تتعامل مع الناس كأنهم آلات تحتاج فقط إلى ضبط مستوى الإرادة. لكنهم ليسوا كذلك. إليك العقبات الحقيقية التي يواجهها معظم المتعلمين — وما هي في الحقيقة.
+    </p>
+
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">😰</span>
+        <h3>الخوف من الظهور بمظهر الغبي</h3>
+        <p>طرح سؤال "ساذج"، أو الخطأ الواضح، أو الاعتراف بالارتباك، يكلّف رصيداً اجتماعياً. فيصمت الناس ويتأخرون. كل متعلم جيد تقريباً تعلّم كيف يتجاوز هذا الخوف.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔄</span>
+        <h3>الخلط بين الألفة والمعرفة</h3>
+        <p>بعد قراءة شيء عدة مرات، يبدو مألوفاً — ويُفسّر الدماغ الألفة على أنها فهم. هذا يُسمى وهم الطلاقة. لهذا يرسب طلاب يشعرون أنهم مستعدون جيداً.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">😞</span>
+        <h3>العقلية الثابتة بعد الفشل</h3>
+        <p>«حاولت وفشلت، إذن أنا ببساطة لست جيداً في هذا.» أثبتت أبحاث كارول دويك لعقود أن هذه القناعة — لا القدرة — هي المؤشر الأكثر موثوقية على الاستسلام المبكر.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <h3>التشتت المستمر</h3>
+        <p>ليس الإشعارات فحسب — الضوضاء في الخلفية، والتبويبات المفتوحة، والمحادثات نصف المكتملة، وقوائم المهام. التعلم العميق يحتاج انتباهاً مُركّزاً مستداماً، ومعظم بيئاتنا الحديثة مصممة ضد ذلك.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">😴</span>
+        <h3>الحرمان المزمن من النوم</h3>
+        <p>ترسيخ الذاكرة يحتاج نوماً. ليس نوماً اختيارياً — بل نوماً كافياً وحقيقياً. التعلم مع نقص النوم المزمن مثل صبّ الماء في دلو به ثقب.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏃</span>
+        <h3>تجنب الكفاح والصعوبة</h3>
+        <p>حين يصعب شيء ما، يكون الدافع الطبيعي هو البحث فوراً عن الإجابة. لكن فترة الكفاح — قبل أن تعرف — هي حين يحدث أكثر التعلم عمقاً. الجلوس مع الارتباك مهارة تُكتسب.</p>
+      </div>
+    </div>
+
+    <div class="pull" style="margin-top: 3rem;">
+      <p>«الأمي في القرن الحادي والعشرين ليس من لا يعرف القراءة والكتابة، بل من لا يستطيع التعلم وإلغاء ما تعلّم وإعادة التعلم.»</p>
+      <cite>— ألفن توفلر، كتاب <em>صدمة المستقبل</em></cite>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 5: MINDSET & EMOTION -->
+  <!-- ============================== -->
+  <section class="section">
+    <p class="section-label">القسم الخامس — الجانب العاطفي</p>
+    <h2>المشاعر ليست عدو التعلم.<br/>بل هي وقوده.</h2>
+
+    <div class="two-col">
+      <div>
+        <p>
+          نميل إلى تصوّر التعلم الجيد كعملية هادئة وعقلانية — اجلس، اقرأ بعناية، دوّن ملاحظات، كرر. لكن دماغك لا يعمل هكذا فعلاً. المشاعر والذاكرة متشابكتان تشابكاً عميقاً على مستوى بيولوجي.
+        </p>
+        <p>
+          اللوزة الدماغية — مركز معالجة المشاعر في دماغك — تقع بجانب الحُصَيْن مباشرة، وهو المكان الذي تتكوّن فيه الذكريات. المشاعر القوية (الفضول، الإثارة، حتى القلق الخفيف أو الدهشة) تُطلق مواد كيميائية تُعزز تكوّن الذاكرة حرفياً. لهذا تتذكر أين كنت في لحظة كبيرة من حياتك، لكنك لا تذكر ماذا أكلت غداءً قبل أسبوعين.
+        </p>
+        <p>
+          عملياً، هذا يعني: إذا جعلت التعلم يُشعرك بشيء — جعلته مثيراً للاهتمام، أو مرتبطاً بشيء تهتم به، أو يشبه تحدياً ممتعاً — فإن دماغك سيعمل معك لا ضدك.
+        </p>
+      </div>
+      <div>
+        <div class="callout sage">
+          <strong>الفضول أداة بيولوجية</strong>
+          <p>وجد عالم الأعصاب ماتياس غروبر أن الفضول يُنشّط دوائر المكافأة التي تُفرز الدوبامين، وفي حالة الفضول يتذكر الناس معلومات عرضية — أشياء لم يحاولوا تعلّمها أصلاً — بشكل أفضل بكثير من المعتاد. الخلاصة: الاهتمام بموضوع ما ليس مجرد ميزة إضافية — بل هو أكفأ أداة تعلّم تمتلكها.</p>
+        </div>
+        <div class="callout blue" style="margin-top: 1rem;">
+          <strong>للضغط نقطة مثالية</strong>
+          <p>ضغط خفيف جداً (لا يهم شيء) وضغط شديد جداً (ذعر) كلاهما يُضعف الذاكرة. التحدي المعتدل — حيث تهتم بالنتيجة وتؤمن بإمكانية نجاحك — يُنتج الحالة المثلى للتعلم العميق. يُسمي علماء النفس هذا "الصعوبة المُرغوبة".</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SECTION 6: BUILDING HABITS -->
+  <!-- ============================== -->
+  <section class="section" id="habits">
+    <p class="section-label">القسم السادس — جعل التعلم يدوم</p>
+    <h2>التعلم كممارسة يومية،<br/>لا كحدث عارض.</h2>
+    <p>
+      الناس الذين يستمرون في التعلم طوال حياتهم يشتركون في شيء واحد: توقفوا عن معاملة التعلم كشيء تفعله للتحضير لاختبار أو الحصول على شهادة. جعلوه ممارسة — مثل الرياضة — تسير في خلفية حياتهم بهدوء وانتظام.
+    </p>
+    <p>
+      إليك كيف يبدو ذلك في الواقع. ليس برنامجاً صارماً. فقط عادات صغيرة تتراكم.
+    </p>
+
+    <div class="card-grid" style="margin-top: 2rem;">
+      <div class="card">
+        <span class="card-icon">📓</span>
+        <h3>اكتب أكثر مما تطبع</h3>
+        <p>الكتابة اليدوية أبطأ، وهذا يُجبرك على معالجة المعلومات وتلخيصها بدلاً من نسخها. تُظهر الأبحاث باستمرار احتفاظاً أفضل بالملاحظات المكتوبة يدوياً مقارنة بالمطبوعة.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🕯️</span>
+        <h3>راجع قبل النوم</h3>
+        <p>أمضِ 10 دقائق قبل النوم تسترجع ما تعلمته اليوم — لا إعادة قراءة، بل استحضار. أنت بذلك تُضاعف أثر ترسيخ الذاكرة الذي يحدث أثناء النوم. التأثير يتراكم بسرعة.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">👥</span>
+        <h3>علّم شخصاً آخر</h3>
+        <p>التدريس هو الاختبار الأهم للفهم. شرح شيء لشخص آخر — أو حتى لشخص خيالي — يكشف كل فجوة في معرفتك بشكل أكثر موثوقية من أي طريقة أخرى.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔗</span>
+        <h3>ربط الجديد بالقديم</h3>
+        <p>قبل تعلّم شيء جديد، اسأل نفسك بِمَ يُذكّرك. وبعده، اسأل أين يندرج. كلما كان للفكرة الجديدة أكثر من خطّاف يربطها بما تعرفه، صعُب عليك نسيانها.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🪴</span>
+        <h3>اصبر على الارتباك</h3>
+        <p>عدم فهم شيء بعد هو نقطة البداية الطبيعية. الانزعاج من الارتباك ليس دليلاً على أنك تفعل شيئاً خاطئاً — بل هو إشارة إلى أن دماغك يؤدي عمله.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔁</span>
+        <h3>عُد إلى ما تعلمته</h3>
+        <p>معظم "التعلم" يحدث مرة واحدة ولا يُعاد. المعرفة الأكثر رسوخاً تعود للأشخاص الذين يرجعون بشكل عرضي إلى الأساسيات — بإعادة القراءة، والممارسة، والشرح — بعد وقت طويل من شعورهم بأنهم يعرفونها.</p>
+      </div>
+    </div>
+
+    <div class="pull" style="margin-top: 3.5rem;">
+      <p>«الاستثمار في المعرفة يُعطي أعلى عائد.»</p>
+      <cite>— بنجامين فرانكلين</cite>
+    </div>
+
+    <h3 style="margin-top: 2.5rem;">كلمة أخيرة</h3>
+    <p>
+      أهم شيء اكتشفه أي إنسان عن التعلم هو هذا: <strong>أنت لستَ محاصراً بالدماغ الذي تملكه.</strong> ذكاؤك ليس ثابتاً. قدرتك على فهم الأشياء، والتحسن فيها، ومفاجأة نفسك — هذه ليست محددة منذ الولادة.
+    </p>
+    <p>
+      في كل مرة تتعلم شيئاً جديداً، تُغيّر فعلياً وجسدياً بنية دماغك. هذا ليس كلاماً تحفيزياً. هذا ما تعنيه المرونة العصبية على مستوى الخلايا.
+    </p>
+    <p>
+      إذن، ابدأ. ابدأ بشكل سيئ. اسأل السؤال المحرج. اختبر نفسك قبل أن تكون جاهزاً. نَم على الموضوع. اشرحه لأحد ما. ارجع إليه بعد أسبوع. هذا كل شيء. هذه هي الممارسة بأكملها.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p style="margin-bottom:0.5rem;"><strong>كيف يتعلم الإنسان</strong></p>
+  <p>كُتبت هذه الصفحة بدافع الشغف الحقيقي بعلم العقل.<br/>
+  المراجع: إيبنجهاوس (1885)، رودجر وكاربيكي (2006)، دويك (2006)، غروبر وآخرون (2014)، كورنيل وبيورك (2008).</p>
+</footer>
+
+</body>
+</html>
